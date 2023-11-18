@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<title>p5 Smiley Face</title>
+<style>
+body {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100vh;
+margin: 0;
+}
+</style>
+</head>
+<body>
+
+<script>
+// Initialize variables
+let faceWidth = 150;
+let faceHeight = 150;
+let isHappy = true;
+
+function setup() {
+createCanvas(400, 400);
+drawSmiley();
+}
+
+function draw() {
+// Background color
+background(0, 0, 255);
+// Display the smiley face
+drawSmiley();
+}
+
+function drawSmiley() {
+// Draw face
+fill(255, 255, 0); // Yellow
+ellipse(width / 2, height / 2, faceWidth, faceHeight);
+
+// Draw eyes
+let eyeSize = 15;
+fill(0); // Black
+ellipse(width / 2 - 30, height / 2 - 15, eyeSize, eyeSize);
+ellipse(width / 2 + 30, height / 2 - 15, eyeSize, eyeSize);
+
+// Draw mouth
+noFill();
+stroke(0); // Black
+strokeWeight(3);
+if (isHappy) {
+arc(width / 2, height / 2 + 20, 80, 60, 0, PI);
+} else {
+arc(width / 2, height / 2 + 40, 80, 60, PI, 0);
+}
+
+// Add click instruction
+fill(0);
+noStroke();
+textSize(16);
+textAlign(CENTER);
+text('Click to change my expression!', width / 2, height - 20);
+}
+
+function mouseClicked() {
+// Toggle smiley expression
+isHappy = !isHappy;
+drawSmiley();
+}
+</script>
+
+</body>
+</html>
